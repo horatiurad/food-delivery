@@ -2,6 +2,7 @@ package com.example.serverlicenta.controller;
 
 import com.example.serverlicenta.entity.Food;
 import com.example.serverlicenta.entity.Order;
+import com.example.serverlicenta.entity.OrderStatus;
 import com.example.serverlicenta.entity.User;
 import com.example.serverlicenta.service.FoodService;
 import com.example.serverlicenta.service.OrderService;
@@ -41,7 +42,7 @@ public class OrderController {
         f.add(food2);
 
         User u=userService.getOneById(1l);
-        Order o=new Order(30.0,u,f);
+        Order o=new Order(30.0,u,f, OrderStatus.DELIVERED);
         food.addOrder(o);
 
     return orderService.saveOrder(o);

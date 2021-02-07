@@ -22,11 +22,22 @@ public class Order {
     private Double totalPrice;
     @ManyToOne(cascade = CascadeType.ALL)
     private User user;
+    @Enumerated(EnumType.STRING)
+    private OrderStatus status;
 
-    public Order(Double totalPrice, User user, List<Food> foods) {
+    public OrderStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(OrderStatus status) {
+        this.status = status;
+    }
+
+    public Order(Double totalPrice, User user, List<Food> foods, OrderStatus st) {
         this.totalPrice = totalPrice;
         this.user = user;
         this.foods = foods;
+        this.status=st;
     }
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name="orders_foods",
